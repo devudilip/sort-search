@@ -10,22 +10,37 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jqueryold
+//= require jquery
 //= require jquery_ujs
 //= require_tree .
 
-$(function () {
-  $("#products th a, #products .pagination a").live("click", function() {
-      $.getScript(this.href);
-      return false;
-    }
-  );
-});
-
-
 // $(function () {
+//   $("#products th a, #products .pagination a").live("click", function() {
+//       $.getScript(this.href);
+//       return false;
+//     }
+//   );
+// });
+
+
+$(function () {
+// Sorting and pagination links.
+	// $('#products th a, #products .pagination a').live('click', 
+ //    function () {
+ //      $.getScript(this.href);
+ //      return false;
+ //    }
+ //  );
+
 //     $('#products').on('click', 'th a', function () {
 //         $.getScript(this.href);
 //         return false;
 //     });
-// });
+
+// Search form.
+  $('#products_search input').keyup(function () {
+  $.get($('#products_search').attr('action'), $('#products_search').serialize(), null, 'script');
+  return false;
+});
+
+});
